@@ -2,7 +2,7 @@
 - Open config.json
 - Replace `your token` with your bot token
 - Replace `your userid` with your discord userid 
-- THen run `launch.bat`
+- Then run `launch.bat`
 - Wait for the installation to finish
 - Then re-run the file, and your good to go
 
