@@ -1,12 +1,4 @@
-const {
-  Client,
-  Message,
-  EmbedBuolder,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-  EmbedBuilder,
-} = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -27,7 +19,14 @@ module.exports = {
           .setDescription(
             `Hey there ${message.author}, ${client.user.username} is fully moderation bot with lots of features and high-quality moderation! Use /help to get started.`
           )
-          .setFooter({ text: `I'm currently serving ${client.guilds.cache.size} servers and ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users.` }),
+          .setFooter({
+            text: `I'm currently serving ${
+              client.guilds.cache.size
+            } servers and ${client.guilds.cache.reduce(
+              (a, b) => a + b.memberCount,
+              0
+            )} users.`,
+          }),
       ],
     });
   },

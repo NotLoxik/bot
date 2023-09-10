@@ -3,16 +3,14 @@ const {
   EmbedBuilder,
   SlashCommandBuilder,
   ActionRowBuilder,
-  SelectMenuBuilder
-} = require('discord.js');
-
+  SelectMenuBuilder,
+} = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription("Shows a list of all coammnds."),
   async execute(interaction, client) {
-
     const emojis = {
       moderation: "🛠️",
       general: "📌",
@@ -45,10 +43,13 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle(`${client.user.username}'s help page`)
-      .setThumbnail(`https://cdn.discordapp.com/avatars/1003985217008181282/c4f70b2ff891e5137e07f84781461764.webp?size=512`)
-      .setColor('#5865F2')
-      .setFooter({ text: `Choose a category below to list all of commands from each category.` })
-      .setDescription(`
+      .setThumbnail(
+        `https://cdn.discordapp.com/avatars/1003985217008181282/c4f70b2ff891e5137e07f84781461764.webp?size=512`
+      )
+      .setColor("#5865F2")
+      .setFooter({
+        text: `Choose a category below to list all of commands from each category.`,
+      }).setDescription(`
     Hey there ${interaction.user}, your help has arrived!
     ${client.user.username} is a moderation bot with lots of features and high-quality moderation!
 
@@ -57,8 +58,7 @@ module.exports = {
     ➡ General
     ➡ Moderation
 
-    `)
-
+    `);
 
     const components = (state) => [
       new ActionRowBuilder().addComponents(
@@ -100,23 +100,22 @@ module.exports = {
       );
 
       const mappedCommands = category.commands.map((cmd) => {
-        return `\`${cmd.name}\``
-      }
-      );
+        return `\`${cmd.name}\``;
+      });
 
-      const stringedCommands = mappedCommands.join(', ');
+      const stringedCommands = mappedCommands.join(", ");
 
       const categoryEmbed = new EmbedBuilder()
         .setTitle(`Commands from ${formatString(directory)} category.`)
         .setDescription(stringedCommands)
-        .setColor('#5865F2');
+        .setColor("#5865F2");
 
       interaction.update({ embeds: [categoryEmbed] });
     });
 
     collector.on("end", () => {
       initialMessage.edit({ components: components(true) });
-      console.error()
+      console.error();
     });
   },
 };
