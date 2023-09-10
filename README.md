@@ -10,11 +10,5 @@
 - You can implement some database ex. mongoose
 - You can use any of your desired hosting
 
-# Dependencies
-- ascii-table
-- discord.js
-- fs
-- ms
-
 # Additional notes
 - Please don't remove any of my credit, I took my time with this bot.
